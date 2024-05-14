@@ -9,14 +9,14 @@ while True:
         k=a.split(":")[0]
         v=a.split(":")[1]
         v_v=v.split(",")
-    # if k=="name":
-    #     authors=Authors.objects(fullname=v)
-    #     quotes=Quotes.objects()
-    #     for a in authors:
-    #         print(a.to_mongo().to_dict())
-    #         for q in quotes:
-    #             print(q.to_mongo().to_dict())
-    #             # if a.id==q.id:
+    if k=="name":
+        authors=Authors.objects(fullname=v)
+        quotes=Quotes.objects(author=v)
+        for a in authors:
+            print(a.to_mongo().to_dict())
+        for q in quotes:
+            print(q.to_mongo().to_dict())
+            # if a.id==q.id:
     if k=="tag":
         quotes=Quotes.objects(tags=v)
         for q in quotes:
