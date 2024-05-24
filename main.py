@@ -11,13 +11,21 @@ while True:
         k = a.split(":")[0]
         v = a.split(":")[1]
         v_v = v.split(",")
+    # if k == "name":
+    #     auth=Authors.objects(fullname=v)
+    #     quotes = Quotes.objects(author=auth)
+    #     for q in quotes:
+    #         print(q.to_mongo())
+    #     for a in auth:
+    #         print(a.to_mongo())
+        
     if k == "name":
-        auth=Authors.objects(fullname=v)
-        quotes = Quotes.objects(author=auth)
-        for q in quotes:
-            print(q.to_mongo())
-        for a in auth:
-            print(a.to_mongo())
+        auth=Authors.objects(fullname=v).all()
+        for author in auth:
+            quotes = Quotes.objects(author=author)
+            for q in quotes:
+                print(v,q.quote)
+
     if k == "tag":
         quotes = Quotes.objects(tags=v)
         for q in quotes:
